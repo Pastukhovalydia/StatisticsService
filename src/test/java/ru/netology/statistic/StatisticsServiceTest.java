@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Assertions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class StatisticsServiceTest {
     @Test
@@ -15,12 +17,22 @@ public class StatisticsServiceTest {
 
         long actual = service.findMax(incomesInBillions);
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
 
 
+    @Test
+    void findMax_AllNegative() {
+        StatisticsService service = new StatisticsService();
 
+        long[] incomesInBillions = {-10, -5, -8, -4, -6};
+        long expected = -4;
+
+        long actual = service.findMax(incomesInBillions);
+
+        Assertions.assertEquals(expected, actual);
+    }
 
 
 }
